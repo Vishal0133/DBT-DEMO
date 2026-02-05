@@ -13,5 +13,6 @@ from CTE
 group by daily_weather,weather
 qualify row_number() OVER (partition by daily_weather order by count(weather) desc )=1
 
---for each weather type start with one 
+--partition by daily_weather
+--for each weather type, it start with one 
 --qualify row_number() OVER (partition by daily_weather order by count(weather) desc )=1

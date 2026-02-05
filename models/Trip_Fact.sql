@@ -1,12 +1,11 @@
 {{ config(materialized='table') }}
 
 With CTE as (
-    select * from  {{ source('demo', 'bike') }}
+    select * from  {{ ref('bike_stage') }}
     limit 10
 )
 select 
 RIDE_ID,
-RIDEABLE_TYPE,
 DATE(to_timestamp(STARTED_AT)) as TRIP_DATE,
 START_STATIO_ID as START_STATION_ID,
 MEMBER_CSUAL as MEMBER_CASUAL,

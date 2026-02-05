@@ -3,8 +3,8 @@
 }}
 
 with cte as (
-select * from {{source('demo','bike')}}
-where RIDE_ID!='ride_id'
+select * from {{ ref('bike_stage') }}
+where RIDE_ID!='ride_id' and  STARTED_AT != 'started_at' and STARTED_AT != '"started_at"'
 )
 select 
 start_statio_id as start_station_id,
